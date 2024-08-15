@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductBagsComponent } from './product-bags/product-bags.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
 
 const routes: Routes = [
+  {
+    path: 'bags/:id',
+    component: SubCategoryComponent
+  },
   {
     path: '',
     loadComponent: () =>
@@ -16,7 +21,7 @@ const routes: Routes = [
     component: ProductBagsComponent,
   },
   {
-    path: 'bags/1',
+    path: 'detail/:id',
     component: ProductDetailComponent,
   },
 ];
@@ -25,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProductRoutingModule {}
+export class ProductRoutingModule { }

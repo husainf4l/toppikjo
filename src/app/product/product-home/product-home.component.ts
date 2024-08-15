@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ProductService } from './services/product.service';
 import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-home',

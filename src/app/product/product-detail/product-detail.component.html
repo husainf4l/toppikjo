@@ -9,36 +9,28 @@
 </div>
 
 <div class="banner-main">
-  <img
-    class="banner"
-    src="https://ik.imagekit.io/husian/banner-dark_W5uq7Dv5o%20(1).jpg?updatedAt=1723681981877"
-    alt="banner"
-  />
+  <img class="banner" src="https://ik.imagekit.io/husian/banner-dark_W5uq7Dv5o%20(1).jpg?updatedAt=1723681981877"
+    alt="banner" />
 </div>
+<div *ngIf="product">
 
-<div class="header">
-  <h4 class="collection-header">Gucci - GG Marmont matelasse mini bag</h4>
-</div>
 
-<div class="product-list-container">
-  <div class="product-list">
-    <img
-      class="product-img"
-      src="https://ik.imagekit.io/husian/21789859-1-nero-removebg-preview_wgW5IS-k3.png?updatedAt=1723681170294"
-      alt="GG Marmont matelasse mini bag"
-    />
+  <div class="header">
+    <h4 class="collection-header">{{product.title}}</h4>
   </div>
-  <div class="product-price">$2350</div>
-  <div class="product-info">
-    Gucci's GG Marmont Mini shoulder bag is crafted in Italy from quilted
-    matelassé leather with a chevron finish. The softly structured shape is
-    adorned with the brand's iconic double-G hardware for instant recognition –
-    a signature that really stands out against the black leather. Tote your
-    essentials in its suede-lined interior and adjust the sliding chain strap
-    for a longer or shorter drop.
-  </div>
-</div>
 
-<div class="buy-btn-container">
-  <button class="buy-btn">Buy now</button>
+  <div class="product-list-container">
+    <div class="product-list">
+      <img class="product-img" [src]=product.imgUrl1 alt="GG Marmont matelasse mini bag" />
+    </div>
+    <div class="product-price">${{product.price}}</div>
+    <div class="product-info">
+      {{product.description}}
+    </div>
+  </div>
+
+  <div class="buy-btn-container">
+    <button class="buy-btn">Buy now</button>
+
+  </div>
 </div>
