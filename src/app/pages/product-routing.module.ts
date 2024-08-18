@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductBagsComponent } from './product-bags/product-bags.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { TestComponent } from '../test/test.component';
 
 const routes: Routes = [
   {
-    path: 'bags/:id',
+    path: 'shop',
     component: SubCategoryComponent
   },
   {
@@ -16,13 +16,16 @@ const routes: Routes = [
         (m) => m.ProductHomeComponent
       ),
   },
-  {
-    path: 'bags',
-    component: ProductBagsComponent,
-  },
+
   {
     path: 'detail/:id',
     component: ProductDetailComponent,
+  },
+
+
+  {
+    path: 'test',
+    component: TestComponent,
   },
 ];
 

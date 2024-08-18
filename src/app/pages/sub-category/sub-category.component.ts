@@ -23,7 +23,7 @@ export class SubCategoryComponent implements OnInit {
     this.activeRoute.params.subscribe(
       (data: any) => {
         console.log('data', data['id']),
-          this.productService.getProductsBySubCategory(data['id']).subscribe(
+          this.productService.getProducts().subscribe(
             products => {
               console.log('products', products)
               this.subProducts = products

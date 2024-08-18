@@ -1,0 +1,64 @@
+/* Base Styles */
+.navbar {
+    padding: 10px 20px;
+    background-color: white;
+    /* Adding a background color for better visibility */
+    border-bottom: 1px solid #eaeaea;
+    /* Optional border for separation */
+}
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.nav-logo {
+    width: 120px;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: rgb(66, 65, 65);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: black;
+    font-weight: 700;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-icon {
+    display: none;
+    /* Hide the menu icon by default */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: black;
+    }
+}

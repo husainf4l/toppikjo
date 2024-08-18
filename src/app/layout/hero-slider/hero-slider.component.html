@@ -1,0 +1,58 @@
+<div class="hero-slider">
+    <div class="slide" *ngFor="let slide of slides; let i = index" [ngClass]="{'active': i === currentSlide}">
+        <img [src]="slide" alt="Hero Image {{ i + 1 }}">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button class="prev" (click)="prevSlide()">&#10094;</button>
+    <button class="next" (click)="nextSlide()">&#10095;</button>
+</div>
+
+
+<section class="bg-white hidden">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Transform Your Look with Toppik</h2>
+            <p class="mb-4">At Toppik, we provide solutions that boost your confidence and redefine your style. Our hair
+                building fibers offer a quick, effective way to achieve a fuller, thicker hair look, no matter your hair
+                type
+                or color.</p>
+            <p>We combine innovation with expertise to deliver results you can trust, empowering you to feel your best
+                every
+                day. Simple, quick, and powerful—just like our products.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+            <img class="w-full rounded-lg" src="https://www.toppik.ca/images/jonathan_before.png"
+                alt="Toppik Hair Fibers">
+            <img class="mt-4 w-full lg:mt-10 rounded-lg" src="https://www.toppik.ca/images/jonathan_after.jpg"
+                alt="Toppik Hair Transformation">
+        </div>
+    </div>
+</section>
+
+
+
+<section>
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+        <h1 class="mb-4 text-4xl font-medium tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
+            Instantly Fuller Hair That Looks and Feels Natural.
+        </h1>
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 "> Transform your hair in just 30
+            seconds with Toppik - the secret to thicker, natural-looking hair that boosts your confidence instantly.
+            Discover
+            the power of real results, right when you need them.
+
+        </p>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+            <a href="#"
+                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:ring-blue-300">
+                Whatsapp
+
+            </a>
+            <a href="#"
+                class="py-3 px-5 sm:ms-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-4 focus:ring-gray-100 ">
+                Shop Now
+            </a>
+        </div>
+    </div>
+</section>

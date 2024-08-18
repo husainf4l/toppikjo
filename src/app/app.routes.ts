@@ -4,6 +4,6 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./product/product.module').then((m) => m.ProductModule),
+      import('./pages/product.module').then((m) => m.ProductModule),
   },
 ];

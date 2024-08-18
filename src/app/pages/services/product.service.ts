@@ -11,7 +11,9 @@ export class ProductService {
   getProducts() {
     return this.http.get(this.apiURL + '/product');
   }
-
+  getFeaturedProducts() {
+    return this.http.get(this.apiURL + '/product/featured');
+  }
   getProductsBySubCategory(id: any) {
     return this.http.get(this.apiURL + '/product/category/' + id)
   }

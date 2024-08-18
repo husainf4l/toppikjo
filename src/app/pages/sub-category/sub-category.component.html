@@ -1,0 +1,52 @@
+<div class="banner-main">
+    <img class="banner" src="https://ik.imagekit.io/husian/banner-dark_W5uq7Dv5o%20(1).jpg?updatedAt=1723681981877"
+        alt="banner" />
+</div>
+<div class="header">
+    <h2 class="collection-header">Toppik-Offers</h2>
+</div>
+
+
+
+
+<div>
+
+    <div class="mx-auto max-w-2xl px-4 py-3 sm:px-6 sm:py-3 lg:max-w-7xl lg:px-8">
+
+        <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div *ngFor="let product of subProducts">
+                <a [href]="'/detail/' + product.id" class="group">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src={{product.imgUrl}} alt={{product.description}}
+                            class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h3 class="mt-4 text-lg text-gray-700">{{product.name}}</h3>
+
+                    <div class="flex items-center space-x-4">
+                        <!-- Sale Price -->
+                        <span class="text-xl font-bold text-red-600">{{product.price}}JD </span>
+
+
+
+
+                    </div>
+                    <div class="flex flex-col  sm:flex-row sm:justify-center  mt-2">
+                        <a href=""
+                            class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:ring-blue-300">
+                            Shop Now
+
+                        </a>
+
+                    </div>
+                </a>
+            </div>
+
+            <!-- More products... -->
+        </div>
+
+
+
+
+    </div>
+</div>
