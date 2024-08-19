@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -6,9 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://149.200.251.14:3000'; // Update with your backend URL
+  private apiUrl = 'http://149.200.251.14:3000';
+  private cartItemCount = signal(0);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  updateCartItemCount(count: number) {
+    this.cartItemCount.set(count);
+  }
+  get cartItemCount$(): Signal<number> {
+    return this.cartItemCount;
+  }
 
   createCart(): Observable<any> {
     return this.http.post(`${this.apiUrl}/cart`, {});

@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../models/cart-item.model';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -15,19 +18,16 @@ export class ProductDetailComponent implements OnInit {
   product: any = {};
   selectedColor: string | null = null;
   showColorWarning = false;
+  cartId: string = 'your-cart-id';
 
-  addToCart() {
-    if (!this.selectedColor) {
-      this.showColorWarning = true;
-    } else {
-      this.showColorWarning = false;
-      // Proceed with adding to cart logic
-    }
-  }
 
-  constructor(private activatedRoute: ActivatedRoute, public productService: ProductService) { }
+
+  constructor(private activatedRoute: ActivatedRoute, public productService: ProductService, private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.cartId = localStorage.getItem('cartId') || this.initializeCart();
+
     this.activatedRoute.params.subscribe(
       url => {
         console.log('url', url['id'])
@@ -41,5 +41,31 @@ export class ProductDetailComponent implements OnInit {
       }
     )
   }
+  initializeCart(): string {
+    this.cartService.createCart().subscribe(cart => {
+      localStorage.setItem('cartId', cart.id);
+      this.cartId = cart.id;
+    });
+    return this.cartId;
+  }
+
+  addToCart() {
+    if (!this.selectedColor) {
+      this.showColorWarning = true;
+    } else {
+      this.showColorWarning = false;
+      this.cartService.addItemToCart(this.cartId, this.product.id, 1).subscribe(() => {
+        // After adding to cart, update the cart item count
+        this.cartService.getCart(this.cartId).subscribe(cart => {
+          const totalItems = cart.items.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
+          this.cartService.updateCartItemCount(totalItems);
+        });
+      });
+    }
+  }
+
+
+
+
 
 }

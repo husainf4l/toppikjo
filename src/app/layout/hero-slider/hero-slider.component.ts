@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-hero-slider',
   templateUrl: './hero-slider.component.html',
   styleUrls: ['./hero-slider.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 export class HeroSliderComponent {
   slides: string[] = [

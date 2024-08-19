@@ -1,28 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-order',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  providers: [],  // Enable fetch
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
-export class OrderComponent {
-  cartId: string = ''; 
-  address: string = '';
-  mobile: string = '';
-  order: any = null;
+export class OrderComponent implements OnInit {
+  address: string | null = null;
+  mobile: string | null = null;
+  totalPrice: number = 0;
 
-  constructor(private orderService: OrderService) {}
+  constructor(private route: ActivatedRoute, private orderService: OrderService, private router: Router) { }
 
-  placeOrder() {
-    this.orderService.createOrder(this.cartId, this.address, this.mobile).subscribe((data) => {
-      this.order = data;
-      console.log(data)
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.address = params['address'];
+      this.mobile = params['mobile'];
+      this.totalPrice = params['totalPrice'] || 0;  // You can calculate this if not passed
     });
+  }
+
+  confirmOrder(): void {
+    const orderId = 'generated-order-id';  // Replace with actual logic to generate or retrieve order ID
+    this.orderService.confirmOrder(orderId, this.totalPrice);
   }
 }

@@ -1,48 +1,72 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { CartService } from '../services/cart.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  standalone: true,
-  imports: [HttpClientModule,CommonModule],  // Import necessary modules here
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
 export class CartComponent implements OnInit {
   cart: any = null;
-  cartId: string = ''; // Retrieve or create the cart ID dynamically
+  totalPrice: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.initializeCart();
+    this.loadCart();
   }
 
-  initializeCart() {
-    // Create or retrieve cart here
-    this.cartService.createCart().subscribe((data) => {
-      this.cartId = data.id;
-      this.loadCart();
+  loadCart(): void {
+    const cartId = localStorage.getItem('cartId');
+    if (cartId) {
+      this.cartService.getCart(cartId).subscribe(cart => {
+        this.cart = cart;
+        this.calculateTotalPrice();
+      });
+    }
+  }
+
+  calculateTotalPrice(): void {
+    this.totalPrice = this.cart.items.reduce((sum: number, item: any) => {
+      return sum + item.product.price * item.quantity;
+    }, 0);
+  }
+
+  incrementQuantity(item: any): void {
+    item.quantity++;
+    this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity).subscribe(() => {
+      this.calculateTotalPrice();
     });
   }
 
-  loadCart() {
-    this.cartService.getCart(this.cartId).subscribe((data) => {
-      this.cart = data;
-    });
+  decrementQuantity(item: any): void {
+    if (item.quantity > 1) {
+      item.quantity--;
+      this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity).subscribe(() => {
+        this.calculateTotalPrice();
+      });
+    }
   }
 
-  addToCart(productId: string, quantity: number) {
-    this.cartService.addItemToCart(this.cartId, productId, quantity).subscribe(() => {
-      this.loadCart();
-    });
-  }
-
-  removeFromCart(itemId: string) {
+  removeFromCart(itemId: string): void {
     this.cartService.removeItemFromCart(itemId).subscribe(() => {
-      this.loadCart();
+      this.loadCart(); // Reload the cart after removal
     });
   }
+
+  proceedToCheckout(): void {
+    this.router.navigate(['/shipping-address'], {
+      queryParams: {
+        cart: JSON.stringify(this.cart.items),  // Pass the cart items
+        totalPrice: this.totalPrice              // Pass the total price
+      }
+    });
+  }
+
+
+
 }

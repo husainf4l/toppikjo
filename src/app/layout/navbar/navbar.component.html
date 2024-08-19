@@ -15,7 +15,13 @@
 
         <ul class="nav-icons">
             <div class="bx bx-menu bx-sm menu-icon"></div>
-            <div class="bx bx-cart bx-sm"></div>
+            <div class="relative">
+                <div class="bx bx-cart bx-sm"></div>
+                <span *ngIf="cartItemCount$() > 0"
+                    class="absolute top-0 right-0 text-xs bg-red-500 rounded-full w-5 h-5 flex items-center justify-center">
+                    {{ cartItemCount$() }}
+                </span>
+            </div>
             <div class="bx bx-user bx-sm"></div>
         </ul>
 
