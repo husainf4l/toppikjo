@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { HeroSliderComponent } from "../../layout/hero-slider/hero-slider.component";
-import { TestimonialCarouselComponent } from "../../layout/testimonial-carousel/testimonial-carousel.component";
+import { AvailableAtComponent } from "../../layout/available-at/available-at.component";
+import { NewsletterComponent } from "../../layout/newsletter/newsletter.component";
 
 @Component({
   selector: 'app-product-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeroSliderComponent, TestimonialCarouselComponent],
+  imports: [CommonModule, RouterModule, HeroSliderComponent, AvailableAtComponent, NewsletterComponent],
   providers: [],
   templateUrl: './product-home.component.html',
   styleUrls: ['./product-home.component.css'],

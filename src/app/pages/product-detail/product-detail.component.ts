@@ -2,16 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
-  product: any;
+  product: any = {};
+  selectedColor: string | null = null;
+  showColorWarning = false;
+
+  addToCart() {
+    if (!this.selectedColor) {
+      this.showColorWarning = true;
+    } else {
+      this.showColorWarning = false;
+      // Proceed with adding to cart logic
+    }
+  }
+
   constructor(private activatedRoute: ActivatedRoute, public productService: ProductService) { }
 
   ngOnInit(): void {
