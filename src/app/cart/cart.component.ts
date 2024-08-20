@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
 
   incrementQuantity(item: any): void {
     item.quantity++;
-    this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity).subscribe(() => {
+    this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity, item.color).subscribe(() => {
       this.calculateTotalPrice();
     });
   }
@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
   decrementQuantity(item: any): void {
     if (item.quantity > 1) {
       item.quantity--;
-      this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity).subscribe(() => {
+      this.cartService.addItemToCart(this.cart.id, item.productId, item.quantity, item.color).subscribe(() => {
         this.calculateTotalPrice();
       });
     }

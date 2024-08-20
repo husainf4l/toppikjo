@@ -22,8 +22,8 @@ export class CartService {
     return this.http.post(`${this.apiUrl}/cart`, {});
   }
 
-  addItemToCart(cartId: string, productId: string, quantity: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/cart/${cartId}/items`, { productId, quantity });
+  addItemToCart(cartId: string, productId: string, quantity: number, color: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/cart/${cartId}/items`, { productId, quantity, color });
   }
 
   getCart(cartId: string): Observable<any> {
@@ -32,5 +32,9 @@ export class CartService {
 
   removeItemFromCart(itemId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/cart/items/${itemId}`);
+  }
+
+  deleteCart(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/cart/delete/${id}`);
   }
 }

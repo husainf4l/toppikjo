@@ -54,7 +54,7 @@ export class ProductDetailComponent implements OnInit {
       this.showColorWarning = true;
     } else {
       this.showColorWarning = false;
-      this.cartService.addItemToCart(this.cartId, this.product.id, 1).subscribe(() => {
+      this.cartService.addItemToCart(this.cartId, this.product.id, 1, this.selectedColor).subscribe(() => {
         // After adding to cart, update the cart item count
         this.cartService.getCart(this.cartId).subscribe(cart => {
           const totalItems = cart.items.reduce((sum: number, item: CartItem) => sum + item.quantity, 0);
@@ -63,6 +63,7 @@ export class ProductDetailComponent implements OnInit {
       });
     }
   }
+
 
 
 

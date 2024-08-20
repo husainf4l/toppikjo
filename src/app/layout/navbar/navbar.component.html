@@ -16,9 +16,9 @@
         <ul class="nav-icons">
             <div class="bx bx-menu bx-sm menu-icon"></div>
             <div class="relative">
-                <div class="bx bx-cart bx-sm"></div>
+                <div class="bx bx-cart bx-sm " routerLink="/cart"></div>
                 <span *ngIf="cartItemCount$() > 0"
-                    class="absolute top-0 right-0 text-xs bg-red-500 rounded-full w-5 h-5 flex items-center justify-center">
+                    class="absolute top-0 right-0 text-xs bg-red-500 rounded-full w-2 h-2 flex items-center justify-center">
                     {{ cartItemCount$() }}
                 </span>
             </div>
@@ -29,7 +29,7 @@
         <div class="flex-col justify-center items-center text-center ">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" lang="en" routerLink="/products">الرئيسية</a>
+                    <a class="nav-link" lang="en" routerLink="/">الرئيسية</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/shop">تسوق الان</a>

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+import { CartService } from './cart.service';
+import { of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +12,21 @@ import { Router } from '@angular/router';
 export class OrderService {
   private apiUrl = 'http://149.200.251.14:3000'; // Update with your backend URL
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private cartService: CartService) { }
 
   createOrder(cartId: string, address: string, mobile: string, userName?: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/order/${cartId}`, { address, mobile, userName });
+    return this.http.post(`${this.apiUrl}/order/${cartId}`, { address, mobile, userName }).pipe(
+      switchMap(order => {
+        // Delete the cart from the server
+        return this.cartService.deleteCart(cartId).pipe(
+          // After deleting the cart from the server, remove it from local storage
+          switchMap(() => {
+            localStorage.removeItem('cartId');
+            return of(order);  // Wrap the order in an Observable
+          })
+        );
+      })
+    );
   }
 
   confirmOrder(orderId: string, totalPrice: number): void {

@@ -7,6 +7,8 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
 import { ShippingAddressComponent } from './pages/shipping-address/shipping-address.component';
 import { OrderComponent } from './order/order.component';
 import { OrderListComponent } from './pages/order-list/order-list.component';
+import { AuthorizedComponent } from './pages/authorized/authorized.component';
+import { AuthorizedDetailsComponent } from './pages/authorized-details/authorized-details.component';
 
 export const routes: Routes = [
   {
@@ -27,5 +29,7 @@ export const routes: Routes = [
   { path: 'order-details/:id', component: OrderDetailsComponent },
   { path: 'shipping-address', component: ShippingAddressComponent },
   { path: 'admin/orders', component: OrderListComponent },
+  { path: 'authorized', component: AuthorizedComponent, },
+  { path: 'authorized/:id', component: AuthorizedDetailsComponent, },
 
 ];
