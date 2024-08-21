@@ -9,27 +9,19 @@ import { OrderComponent } from './order/order.component';
 import { OrderListComponent } from './pages/order-list/order-list.component';
 import { AuthorizedComponent } from './pages/authorized/authorized.component';
 import { AuthorizedDetailsComponent } from './pages/authorized-details/authorized-details.component';
+import { BlogComponent } from './pages/blog/blog.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: ProductHomeComponent
-  },
-  {
-    path: 'shop',
-    component: SubCategoryComponent
-  },
-  {
-    path: 'shop/:id',
-    component: ProductDetailComponent,
-  },
+  { path: '',component: ProductHomeComponent},
+  { path: 'shop',component: SubCategoryComponent},
+  { path: 'shop/:id',component: ProductDetailComponent,},
   { path: 'cart', component: CartComponent },
   { path: 'order-confirmation', component: OrderComponent },
-
   { path: 'order-details/:id', component: OrderDetailsComponent },
   { path: 'shipping-address', component: ShippingAddressComponent },
-  { path: 'admin/orders', component: OrderListComponent },
-  { path: 'authorized', component: AuthorizedComponent, },
-  { path: 'authorized/:id', component: AuthorizedDetailsComponent, },
+  { path: 'admin/orders', component: OrderListComponent},
+  { path: 'authorized', component: AuthorizedComponent,},
+  { path: 'authorized/:id', component: AuthorizedDetailsComponent,},
+  { path: 'blog', component: BlogComponent,},
 
 ];

@@ -16,4 +16,11 @@ export class NavbarComponent {
   constructor(private cartService: CartService) {
     this.cartItemCount$ = this.cartService.cartItemCount$;
   }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
 }
