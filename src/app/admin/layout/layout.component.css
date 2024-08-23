@@ -1,0 +1,10 @@
+/* admin-navbar.component.css */
+nav {
+    height: 130px;
+
+    /* Adjust according to your navbar height */
+}
+
+.flex-grow {
+    padding-top: 60px;
+}

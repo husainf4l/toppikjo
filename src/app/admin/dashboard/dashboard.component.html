@@ -1,0 +1,84 @@
+<div class="min-h-screen bg-gray-100 p-8">
+    <div class="container mx-auto">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-semibold text-gray-800">لوحة تحكم المشرف</h1>
+            <p class="text-gray-600">مرحبًا بك في لوحة التحكم الخاصة بالمشرف.</p>
+        </header>
+
+        <!-- Quick Access Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Orders Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">الطلبات</h3>
+                <p class="text-gray-600 mt-2">إدارة طلبات العملاء وتتبع حالات الطلبات.</p>
+                <a [routerLink]="['/admin/orders']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    الطلبات</a>
+            </div>
+
+            <!-- Products Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">المنتجات</h3>
+                <p class="text-gray-600 mt-2">إدارة قوائم المنتجات والأسعار ومستويات المخزون.</p>
+                <a [routerLink]="['/admin/products']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    المنتجات</a>
+            </div>
+
+            <!-- Users Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">المستخدمون</h3>
+                <p class="text-gray-600 mt-2">إدارة حسابات المستخدمين والأدوار والصلاحيات.</p>
+                <a [routerLink]="['/admin/users']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    المستخدمين</a>
+            </div>
+
+            <!-- Blogs Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">المدونات</h3>
+                <p class="text-gray-600 mt-2">إنشاء وإدارة منشورات المدونة والمحتوى.</p>
+                <a [routerLink]="['/admin/blogs']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    المدونات</a>
+            </div>
+
+            <!-- Categories Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">الفئات</h3>
+                <p class="text-gray-600 mt-2">إدارة فئات المنتجات والفئات الفرعية.</p>
+                <a [routerLink]="['/admin/categories']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    الفئات</a>
+            </div>
+
+            <!-- Analytics Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">التحليلات</h3>
+                <p class="text-gray-600 mt-2">عرض تحليلات المبيعات والتقارير.</p>
+                <a [routerLink]="['/admin/analytics']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    التحليلات</a>
+            </div>
+
+            <!-- Reviews Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">المراجعات</h3>
+                <p class="text-gray-600 mt-2">إدارة مراجعات العملاء وتعليقاتهم.</p>
+                <a [routerLink]="['/admin/reviews']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    المراجعات</a>
+            </div>
+
+            <!-- Coupons Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">القسائم</h3>
+                <p class="text-gray-600 mt-2">إنشاء وإدارة أكواد الخصم والعروض.</p>
+                <a [routerLink]="['/admin/coupons']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    القسائم</a>
+            </div>
+
+            <!-- Settings Card -->
+            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-800">الإعدادات</h3>
+                <p class="text-gray-600 mt-2">تكوين إعدادات الموقع وبوابات الدفع.</p>
+                <a [routerLink]="['/admin/settings']" class="text-blue-600 hover:underline mt-4 inline-block">عرض
+                    الإعدادات</a>
+            </div>
+        </div>
+    </div>
+</div>

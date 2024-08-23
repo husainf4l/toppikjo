@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./layout/navbar/navbar.component";
 import { FooterComponent } from "./layout/footer/footer.component";
-import { OrderComponent } from "./order/order.component";
+import { OrderComponent } from './pages/order/order.component';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +13,5 @@ import { OrderComponent } from "./order/order.component";
 })
 export class AppComponent {
   title = 'toppik';
+
 }

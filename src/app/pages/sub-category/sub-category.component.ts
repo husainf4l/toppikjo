@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ProductService } from '../services/product.service';
 import { CommonModule } from '@angular/common';
 import { TitleTransformPime } from '../title.transform.pipe';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-sub-category',

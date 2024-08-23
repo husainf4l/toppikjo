@@ -25,6 +25,6 @@ export class OrderListComponent implements OnInit {
   }
 
   viewOrderDetails(orderId: string): void {
-    this.router.navigate(['/order-details', orderId]);
+    this.router.navigate(['admin/order-details', orderId]);
   }
 }

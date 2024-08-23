@@ -1,0 +1,24 @@
+<head>
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<div class="admin-layout d">
+
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-lg z-50 flex items-center">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-lg font-semibold">Admin Dashboard</div>
+            <div class="flex  items-center">
+                <a href="/admin" class="px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="/admin/orders" class="px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                <a href="/admin/products" class="px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                <a href="/admin/settings" class="px-3 py-2 rounded-md text-sm font-medium">Settings</a>
+
+            </div>
+        </div>
+    </nav>
+    <div class="admin-content">
+        <router-outlet></router-outlet>
+    </div>
+
+
+
+</div>

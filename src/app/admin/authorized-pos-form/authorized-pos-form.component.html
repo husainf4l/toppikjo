@@ -1,0 +1,53 @@
+<div class="p-8 max-w-3xl mx-auto bg-white shadow-md rounded-lg">
+    <h2 class="text-3xl font-semibold mb-8 text-center">
+        {{ id ? 'تعديل نقطة البيع المعتمدة' : 'إضافة نقطة بيع معتمدة جديدة' }}
+    </h2>
+
+    <form (ngSubmit)="submitForm()" class="space-y-6">
+        <div>
+            <label class="block text-lg font-medium text-gray-700">اسم النقطة</label>
+            <input [(ngModel)]="name" name="name" required
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2 text-lg" />
+        </div>
+
+        <div>
+            <label class="block text-lg font-medium text-gray-700">الوصف</label>
+            <textarea [(ngModel)]="description" name="description" required
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2 text-lg"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-lg font-medium text-gray-700">الموقع</label>
+            <input [(ngModel)]="location" name="location" required
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2 text-lg" />
+        </div>
+
+        <div>
+            <label class="block text-lg font-medium text-gray-700">عدد الفروع</label>
+            <input type="number" [(ngModel)]="branches" name="branches" required
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2 text-lg" />
+        </div>
+
+        <div>
+            <label class="block text-lg font-medium text-gray-700">التصنيف</label>
+            <input [(ngModel)]="category" name="category" required
+                class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 p-2 text-lg" />
+        </div>
+
+        <div>
+            <label class="block text-lg font-medium text-gray-700">الشعار</label>
+            <input type="file" (change)="onFileSelected($event)" class="mt-2 block w-full p-2" />
+
+            <!-- Display the current logo if available -->
+            <div *ngIf="logo" class="mt-4">
+                <p class="text-lg font-medium text-gray-700">الشعار الحالي:</p>
+                <img [src]="logo" alt="Logo" class="mt-2 h-24 w-24 object-cover rounded-md border" />
+            </div>
+        </div>
+
+        <button type="submit"
+            class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+            {{ id ? 'تحديث' : 'إضافة' }}
+        </button>
+    </form>
+</div>
