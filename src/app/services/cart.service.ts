@@ -1,12 +1,13 @@
 import { Injectable, Signal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://149.200.251.14:3000';
+  private apiUrl = `${environment.apiUrl}`;
   private cartItemCount = signal(0);
 
   constructor(private http: HttpClient) { }

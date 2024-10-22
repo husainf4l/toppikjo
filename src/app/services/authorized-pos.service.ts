@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizedPosService {
-  private apiUrl = 'http://149.200.251.14:3000/authorized-pos';
+  private apiUrl = `${environment.apiUrl}/authorized-pos`;
 
   constructor(private http: HttpClient) { }
 

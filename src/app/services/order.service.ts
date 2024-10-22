@@ -4,13 +4,14 @@ import { Observable, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from './cart.service';
 import { of } from 'rxjs';
+import { environment } from '../enviroments/enviroment';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://149.200.251.14:3000'; // Update with your backend URL
+  private apiUrl = `${environment.apiUrl}`; // Update with your backend URL
 
   constructor(private http: HttpClient, private router: Router, private cartService: CartService) { }
 

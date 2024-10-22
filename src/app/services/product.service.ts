@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  apiURL = 'http://149.200.251.14:3000';
+  apiURL = `${environment.apiUrl}`;
   constructor(private http: HttpClient) { }
 
   getProducts2(): Observable<any[]> {
