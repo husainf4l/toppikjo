@@ -1,41 +1,63 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../enviroments/enviroment';
+import { Category, NewProduct, Product } from './models/interfaces.model';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  apiURL = `${environment.apiUrl}`;
+
+  private apiUrl = `${environment.apiUrl}/products`
+  private categoryApiUrl = `${environment.apiUrl}/categories`;
+
   constructor(private http: HttpClient) { }
 
-  getProducts2(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiURL}/product`);
+  // Add new product with images
+  addProduct(productData: NewProduct): Observable<Product> {
+    return this.http.post<Product>(`${this.apiUrl}/create`, productData);
   }
 
-  getProducts() {
-    return this.http.get(this.apiURL + '/product');
-  }
-  getFeaturedProducts() {
-    return this.http.get(this.apiURL + '/product/featured');
-  }
-  getProductsBySubCategory(id: any) {
-    return this.http.get(this.apiURL + '/product/category/' + id)
-  }
-  getProductDetailById(id: any) {
-    return this.http.get(this.apiURL + '/product/' + id)
-  }
-  createProduct(product: any): Observable<any> {
-    return this.http.post(`${this.apiURL}/product`, product);
-  }
-  getProductById(productId: string): Observable<any> {
-    return this.http.get(`${this.apiURL}/product/${productId}`);
+  // Fetch categories
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.categoryApiUrl);
   }
 
-  updateProduct(productId: string, productData: any): Observable<any> {
-    return this.http.patch(`${this.apiURL}/product/${productId}`, productData);
+  // Fetch all products
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl);
   }
 
+  getFeaturedProducts(categoryHandle: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/featured/${categoryHandle}`);
+  }
 
+  // Fetch a single product by ID  
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
+
+  getProductByHandle(handle: string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/handle/${handle}`);
+  }
+  // Update product using JSON data
+  updateProduct(id: number, productData: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, productData);
+  }
+
+  // Delete product
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  getProductsByCategoryHandle(categoryHandle: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/category/${categoryHandle}`);
+  }
+  getProductsByBRAND(brand: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/brand/${brand}`);
+  }
+  searchProducts(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/search?query=${query}`);
+  }
 }

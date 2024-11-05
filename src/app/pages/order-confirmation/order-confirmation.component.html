@@ -1,0 +1,37 @@
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold mb-6">Order Confirmation</h1>
+  
+    <div *ngIf="order; else noOrder" class="space-y-4">
+      <h2 class="text-xl font-semibold">Thank you for your order!</h2>
+  
+      <p>Order ID: <span class="font-semibold">{{ order.id }}</span></p>
+      <p>Total Amount: <span class="font-semibold">{{ order.total   }}</span></p>
+  
+      <div>
+        <h3 class="text-lg font-semibold">Shipping Address</h3>
+        <p>{{ order.address.line1 }} {{ order.address.line2 }}</p>
+        <p>{{ order.address.city }}, {{ order.address.country }}</p>
+        <p>Phone: {{ order.address.phoneNumber }}</p>
+      </div>
+  
+      <div>
+        <h3 class="text-lg font-semibold">Order Items</h3>
+        <ul class="list-disc ml-5">
+          <li *ngFor="let item of order.orderItems">
+            {{ item.quantity }} x Product ID: {{ item.productId }} - {{ item.price}}
+          </li>
+        </ul>
+      </div>
+  
+      <button 
+        (click)="goHome()" 
+        class="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+        Go to Homepage
+      </button>
+    </div>
+  
+    <ng-template #noOrder>
+      <p>No order details available.</p>
+    </ng-template>
+  </div>
+  

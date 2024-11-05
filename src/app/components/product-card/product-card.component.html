@@ -1,0 +1,51 @@
+<div class="flex flex-wrap justify-center p-4" dir="ltr" lang="en">
+  <!-- Product Card -->
+  <div
+    class="relative w-[315px] h-[390px] md:w-[350px] md:h-[440px] bg-neutral-100 shadow-md rounded-md overflow-hidden group hover:shadow-xl transition-all transform duration-300">
+
+    <!-- Image Section -->
+    <a [routerLink]="['/shop/product', product.handle]" class="block">
+      <div class="relative w-full h-[315px] md:h-[350px] overflow-hidden bg-neutral-50">
+        <img [src]="product.image" [alt]="product.descriptionAr"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-95"
+          loading="lazy" />
+      </div>
+    </a>
+
+    <!-- Content Section -->
+    <div
+      class="absolute bottom-0 w-full bg-neutral-50 transition-all duration-300 md:group-hover:h-[150px] h-[90px] pt-4 px-4 flex flex-col justify-between">
+      <div class="flex flex-row justify-between items-center">
+        <div class="w-[200px]">
+          <span class="text-base text-neutral-700 font-bold block uppercase">
+            {{ product.brand }} {{product.line}}
+          </span>
+          <p class="text-sm font-normal text-neutral-900 mt-1 line-clamp-2">
+            {{ product.shortName  }}
+          </p>
+        </div>
+
+        <div class="flex flex-col items-end">
+         
+            <p class="text-lg font-medium text-neutral-900 mt-1">
+              {{ product.price }} JD
+            </p>
+          <ng-template #noDiscount>
+            <p class="text-lg font-medium text-neutral-700">
+              {{ product.price }} JD
+            </p>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <div class="m-2">
+        <button
+        [routerLink]="['/shop/product', product.handle]" 
+          class="hidden md:flex w-full h-[40px] items-center justify-center bg-neutral-800 hover:bg-rose-700 text-white rounded transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+          <span class="text-center">عرض المنتج</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

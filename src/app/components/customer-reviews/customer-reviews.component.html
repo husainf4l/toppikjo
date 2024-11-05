@@ -1,0 +1,23 @@
+<div class="container mx-auto px-4 md:px-6 lg:px-10 my-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 tracking-wide">آراء العملاء</h2>
+
+    <!-- Scrollable Section -->
+    <div class="overflow-x-auto scroll-smooth scrollbar-hide">
+        <div class="flex gap-8 px-4">
+
+            <!-- Customer Review Card -->
+            <div *ngFor="let review of reviews" class="bg-white shadow-lg rounded-xl p-6 min-w-[300px] max-w-[300px] 
+                        transform transition-all duration-500 hover:scale-105 flex-shrink-0">
+                <div class="flex items-center mb-6 gap-4">
+                    <img class="w-16 h-16 rounded-3xl object-cover" [src]="review.image" alt="{{ review.name }}" />
+                    <div class="ml-4">
+                        <h3 class="text-lg font-semibold text-gray-900">{{ review.name }}</h3>
+                    </div>
+                </div>
+                <p class="text-gray-700 italic leading-relaxed">{{ review.message }}</p>
+            </div>
+            <!-- End of Customer Review Card -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<section class="py-16 bg-gradient-to-r from-white to-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-semibold text-gray-800 mb-4 leading-relaxed tracking-wide">
+                آخر المقالات
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600">
+                اكتشف نصائح الجمال والأسرار والقصص الملهمة من خبرائنا.
+            </p>
+        </div>
+
+        <!-- Scrollable Blog Teasers Section -->
+        <div class="overflow-x-auto scroll-smooth scrollbar-hide">
+            <div class="flex gap-8 px-4">
+
+                <!-- Blog Teaser Item -->
+                <div *ngFor="let blog of blogTeasers" class="bg-white shadow-md rounded-lg overflow-hidden min-w-[400px] max-w-[300px] 
+                      transform hover:scale-105 transition-transform duration-300 flex-shrink-0">
+
+                    <img [src]="blog.imageUrl" [alt]="blog.title" class="w-full h-64 object-cover">
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 leading-tight text-center">{{ blog.title }}
+                        </h3>
+                        <p class="text-gray-600 mb-4">{{ blog.description }}</p>
+                        <a [routerLink]="['/blog', blog.id]" class="text-gold-500 font-medium hover:underline">
+                            اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                <!-- End of Blog Teaser Item -->
+
+            </div>
+        </div>
+    </div>
+</section>

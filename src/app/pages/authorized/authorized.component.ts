@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AuthorizedPosService } from '../../services/authorized-pos.service';
 import { FormsModule } from '@angular/forms';
+import { AuthorizedPosService } from '../../services/authorized-pos.service';
 
 @Component({
   selector: 'app-authorized',
@@ -26,7 +26,7 @@ export class AuthorizedComponent {
 
   fetchPointsOfSale() {
     this.authorizedPosService.getAuthorizedPointsOfSale(this.currentPage, this.itemsPerPage, this.searchQuery)
-      .subscribe((data) => {
+      .subscribe((data:any) => {
         this.places = data.items;
         this.totalItems = data.totalItems;
       });
